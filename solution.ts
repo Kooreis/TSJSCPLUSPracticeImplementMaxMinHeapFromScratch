@@ -1,19 +1,23 @@
-class MinHeap {
-    heap: number[];
-
-    constructor() {
-        this.heap = [];
+hasLeftChild(index: number): boolean {
+        return this.getLeftChildIndex(index) < this.heap.length;
     }
 
-    getLeftChildIndex(parentIndex: number): number {
-        return 2 * parentIndex + 1;
+    hasRightChild(index: number): boolean {
+        return this.getRightChildIndex(index) < this.heap.length;
     }
 
-    getRightChildIndex(parentIndex: number): number {
-        return 2 * parentIndex + 2;
+    hasParent(index: number): boolean {
+        return this.getParentIndex(index) >= 0;
     }
 
-    getParentIndex(childIndex: number): number {
-        return Math.floor((childIndex - 1) / 2);
+    leftChild(index: number): number {
+        return this.heap[this.getLeftChildIndex(index)];
     }
-}
+
+    rightChild(index: number): number {
+        return this.heap[this.getRightChildIndex(index)];
+    }
+
+    parent(index: number): number {
+        return this.heap[this.getParentIndex(index)];
+    }
